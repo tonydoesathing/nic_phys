@@ -21,6 +21,7 @@ int main(void){
             recv = nic_recv();
             for (int i = 0; i < 4; i++) {
                 printf("Port %d: %d\n",i + 1,(recv << (4 + i)) >> 7);
+            }
         }
         else {
             printf("Enter bits to set transmitters: ");
@@ -30,6 +31,7 @@ int main(void){
             }
             char bits = choice;
             nic_send(bits);
+        }
     }
 }
 
