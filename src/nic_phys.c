@@ -1,5 +1,6 @@
 #include <pigpiod_if2.h>
 #include <stdint.h>
+#include "nic_phys.h"
 
 //define ports. broadcom nums. port 1 is idx 0.
 static int in_array[] = {26, 24, 22, 20};
