@@ -3,7 +3,7 @@
 
 void nic_send(char input);
 
-int nic_recv();
+char nic_recv();
 
 
 
