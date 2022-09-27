@@ -21,3 +21,20 @@ nic_send(char input) {
 	gpio_write(pi,in_array[0],(input&b00000001));
 	
 }
+
+char nic_recv() {
+        int pi = pigpio_start(NULL,NULL);
+        char result = 0b00000000;
+        int err;
+        char state;
+        for (int i = 0; i < 4; i++) {
+                err = set_mode(pi, in_array[i], PI_INPUT);
+                if (err) {
+                        return 1;
+                }   
+                state = gpio_read(pi, in_array[i]);
+                result = result | (state << (3 - i));
+        }
+        return result;
+}
+
