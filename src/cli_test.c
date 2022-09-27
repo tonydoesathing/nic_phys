@@ -32,7 +32,6 @@ int main(void){
             if(command=='r'){
                 // recv 
                 bitpattern = nic_recv();
-                printf("Received: %d \n", bitpattern);
                 for (unsigned char mask = 0x08; mask != 0; mask>>=1) {
                     printf("%d",(bitpattern & mask ) ? 1:0);
                 }
@@ -54,7 +53,6 @@ int main(void){
                         bitpattern += pow(2,i) * (holder[i] == '1');
                     }
                 }
-		printf("%d\n",bitpattern);
                 nic_send(bitpattern);
             }
         }
