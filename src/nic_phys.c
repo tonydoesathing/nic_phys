@@ -16,10 +16,10 @@ void nic_send(char input) {
 		set_mode(pi, in_array[i], PI_INPUT);
 	}
 	//set ports to their passed values
-	gpio_write(pi,in_array[0],(input&0b00001000)>>3);
-	gpio_write(pi,in_array[0],(input&0b00000100)>>2);
-	gpio_write(pi,in_array[0],(input&0b00000010)>>1);
-	gpio_write(pi,in_array[0],(input&0b00000001));
+	gpio_write(pi,out_array[0],(input&0b00001000)>>3);
+	gpio_write(pi,out_array[1],(input&0b00000100)>>2);
+	gpio_write(pi,out_array[2],(input&0b00000010)>>1);
+	gpio_write(pi,out_array[3],(input&0b00000001));
 	
 }
 
