@@ -5,7 +5,8 @@
 static int in_array[] = {26, 24, 22, 20};
 static int out_array[] = {27, 25, 23, 21};
 
-
+//input structure: 4 least sig bits of char
+//1 0 0 1 : turns on port 1 and 4, turns off 2 and 3
 nic_send(char input) {
 	int pi = pigpio_start(NULL,NULL);
 	//set modes using a loop
