@@ -8,7 +8,7 @@ static int out_array[] = {27, 25, 23, 21};
 
 //input structure: 4 least sig bits of char
 //1 0 0 1 : turns on port 1 and 4, turns off 2 and 3
-nic_send(char input) {
+void nic_send(char input) {
 	int pi = pigpio_start(NULL,NULL);
 	//set modes using a loop
 	for (int i = 0; i<4; i++) {
@@ -16,13 +16,16 @@ nic_send(char input) {
 		set_mode(pi, in_array[i], PI_INPUT);
 	}
 	//set ports to their passed values
-	gpio_write(pi,in_array[0],(input&b00001000)>>3);
-	gpio_write(pi,in_array[0],(input&b00000100)>>2);
-	gpio_write(pi,in_array[0],(input&b00000010)>>1);
-	gpio_write(pi,in_array[0],(input&b00000001));
+	gpio_write(pi,in_array[0],(input&0b00001000)>>3);
+	gpio_write(pi,in_array[0],(input&0b00000100)>>2);
+	gpio_write(pi,in_array[0],(input&0b00000010)>>1);
+	gpio_write(pi,in_array[0],(input&0b00000001));
 	
 }
 
+//Check and return the state of all receivers
+//Returns a char value with the last four bits representing the receiver states
+//Return format: 0b0000<port1><port2><port3><port4> e.g. 0b00001001
 char nic_recv() {
         int pi = pigpio_start(NULL,NULL);
         char result = 0b00000000;
