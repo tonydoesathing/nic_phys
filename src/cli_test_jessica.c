@@ -19,17 +19,19 @@ int main(void){
         }
         if (choice) {
             recv = nic_recv();
-            for (int i = 0; i < 4; i++) {
-                printf("Port %d: %d\n",i + 1,(recv << (4 + i)) >> 7);
+            for (unsigned char mask = 0x08; mask != 0; mask>>=1) {
+                //print the last four binary digits of the char, which are the relevant digits
+                printf("Port %d: %d\n",i + 1,(recv & mask) ? 1: 0);
             }
         }
         else {
             printf("Enter bits to set transmitters: ");
-            err = scanf("%d", &choice);
-            if (err) { 
-                return 1;
-            }
-            char bits = choice;
+            char input[4];
+            scanf("%s", &input);
+            int binarychoice = 0;
+            for (int i = 0; i < 4; i++) {
+                binarychoice += 2 ** i * (input[i] == '1');
+            char bits = binarychoice;
             nic_send(bits);
         }
     }
