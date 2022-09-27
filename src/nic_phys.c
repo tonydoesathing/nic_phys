@@ -23,6 +23,9 @@ nic_send(char input) {
 	
 }
 
+//Check and return the state of all receivers
+//Returns a char value with the last four bits representing the receiver states
+//Return format: 0b0000<port1><port2><port3><port4> e.g. 0b00001001
 char nic_recv() {
         int pi = pigpio_start(NULL,NULL);
         char result = 0b00000000;
