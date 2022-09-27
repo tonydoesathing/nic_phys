@@ -44,16 +44,17 @@ int main(void){
                 // get bitpattern
                 printf("Enter the bitpattern to send (e.g. 1001): ");
                 char holder[4];
-                char bitpattern;
                 err = scanf("%s", &holder);
                 if(err!=1){
                         printf("Improper input\n");
                     }
                 else {
+		    bitpattern = 0;
                     for(int i = 0; i<4; i++){
-                        bitpattern += pow(2,holder[i]) * (input[i] == '1');
+                        bitpattern += pow(2,i) * (holder[i] == '1');
                     }
                 }
+		printf("%d\n",bitpattern);
                 nic_send(bitpattern);
             }
         }
