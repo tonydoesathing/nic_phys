@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include "nic_phys.h"
+#include <math.h>
 
 /*
     Run a loop to ask if the user wants to send or receive with a certain bit pattern
@@ -41,18 +42,17 @@ int main(void){
                 // send
                 
                 // get bitpattern
-                printf("Enter the bitpattern to send (e.g. 1001): \n");
-                int holder;
-                bitpattern=0;
-                for(int i = 0; i<4; i++){
-                    printf("Port # %d (0 or 1): ", 4-i);
-                    err = scanf(" %d", &holder);
-                    if(err!=1){
+                printf("Enter the bitpattern to send (e.g. 1001): ");
+                char holder[4];
+                char bitpattern;
+                err = scanf("%s", &holder);
+                if(err!=1){
                         printf("Improper input\n");
-                        break;
                     }
-                    printf("\n");
-                    bitpattern += holder << i;
+                else {
+                    for(int i = 0; i<4; i++){
+                        bitpattern += pow(2,holder[i]) * (input[i] == '1');
+                    }
                 }
                 nic_send(bitpattern);
             }
