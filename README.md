@@ -13,4 +13,4 @@ To build the CLI, run `gcc -pthread -o cli-test cli_test.c nic_phys.c -lpigpiod_
 To run the CLI, then call `cli-test`.
 
 ## Authors
-The following code was written by [Jessica Hannebert](https://github.com/Jessicat-H), [Dylan Chappell](https://github.com/dylanchapell), and [Tony Mastromarino](https://github.com/tonydoesathing).
+The following code was written by [Jessica Hannebert](https://github.com/Jessicat-H), [Dylan Chapell](https://github.com/dylanchapell), and [Tony Mastromarino](https://github.com/tonydoesathing).
