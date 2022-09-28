@@ -43,7 +43,6 @@ void nic_init() {
 	
 	//set modes using a loop
 	for (int i = 0; i<4; i++) {
-		set_mode(pi, out_array[i], PI_OUTPUT);
 		set_mode(pi, in_array[i], PI_INPUT);
 	}
 
