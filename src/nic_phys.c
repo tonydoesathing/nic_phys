@@ -34,15 +34,10 @@ char nic_recv() {
 
 void nic_init() {
 	pi = pigpio_start(NULL,NULL);
-	for (int i = 0; i<4; i++) {
-		set_mode(pi, out_array[i], PI_OUTPUT);
-		set_mode(pi,in_array[i],PI_OUTPUT);
-		gpio_write(pi,out_array[i],0);
-		gpio_write(pi,in_array[i],0);
-	}
 	
 	//set modes using a loop
 	for (int i = 0; i<4; i++) {
+		set_mode(pi, out_array[i], PI_OUTPUT);
 		set_mode(pi, in_array[i], PI_INPUT);
 	}
 
