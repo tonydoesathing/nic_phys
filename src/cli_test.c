@@ -11,7 +11,7 @@ int main(void){
     int err;
     char command;
     unsigned char bitpattern;
-
+    nic_init();
     while(running){
         // take in input
         // get command
